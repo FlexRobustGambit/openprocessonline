@@ -1,0 +1,15 @@
+﻿@model ideas.Models.IdeasViewModel.FeedViewModel
+@inject Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnv
+
+<script type="text/javascript" src="~/js/justastring.js" asp-append-version="true"></script>
+<script src="~/js/scrolload.js" asp-append-version="true"></script>
+<script src="~/js/loadComplete.js" asp-append-version="true"></script>
+<script>
+        $(function () {
+            initScrollLoad(0);
+        });
+</script>
+<form id="__AjaxAntiForgeryForm" asp-antiforgery="true"></form>
+<div id="DetailsHolder"></div>
+<div id="ScrollHolder"></div>
+

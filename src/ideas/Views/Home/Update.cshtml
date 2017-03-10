@@ -1,0 +1,26 @@
+﻿@model ideas.Models.IdeasViewModel.UpdateViewModel
+
+<script src="~/js/loadComplete.js" asp-append-version="true"></script>
+<script src="~/js/loadList.js" asp-append-version="true"></script>
+
+<script type="text/javascript">
+    $(function () {
+        var list = @Json.Serialize(Model.JsonIdeas);
+        if(list !== null){
+            console.dir(list);
+            var json = JSON.parse(list);
+            json.forEach(function (i) {
+                $('#list').append(updatelist(i));
+            });
+        }
+    });
+</script>
+
+<div id="ProcessListHolder">
+    <div id="list"></div>
+</div>
+
+
+
+
+

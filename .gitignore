@@ -1,0 +1,5 @@
+src/ideas/wwwroot/images/uploads/
+src/ideas/appsettings.json
+src/ideas/Models/Database/Image.cs
+src/ideas/project.json
+src/ideas/project.lock.json

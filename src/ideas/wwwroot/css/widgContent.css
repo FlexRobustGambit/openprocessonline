@@ -1,0 +1,9 @@
+﻿body {
+    margin: 0!important;
+    padding: 8px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body#iframeBody {
+    border: 1px solid #ccc;
+}

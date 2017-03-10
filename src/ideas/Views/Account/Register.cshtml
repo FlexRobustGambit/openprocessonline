@@ -1,0 +1,67 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+<div class="overlap">
+    <div class="topimage">
+        <img src="~/images/bomen.jpg" class="topimageimg" />
+    </div>
+    <div class="row">
+        <a asp-area="" asp-controller="Home" asp-action="Index">
+            <svg class="largelogo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Laag_1" x="0px" y="0px" viewBox="0 0 594.9 175.5" style="enable-background:new 0 0 594.9 175.5;" xml:space="preserve">
+            <style type="text/css">
+                .st0 { fill: #FFFFFF; }
+                .st1 { font-family: 'AgencyFB-Reg'; }
+                .st2 {font-size: 162.1372px; }
+            </style>
+            <rect id="XMLID_1_" x="91.8" y="19.6" transform="matrix(0.977 0.2133 -0.2133 0.977 19.6073 -20.9819)" class="st0" width="30.5" height="121.5" />
+            <rect id="XMLID_2_" x="54.7" y="59.5" transform="matrix(0.8803 0.4744 -0.4744 0.8803 55.3674 -18.8014)" class="st0" width="20.5" height="81.6" />
+            <rect id="XMLID_3_" x="19.2" y="85.7" transform="matrix(0.7071 0.7071 -0.7071 0.7071 89.9851 15.0073)" class="st0" width="15.3" height="60.8" />
+            <text id="XMLID_4_" transform="matrix(1 0 0 1 125.755 143.0028)" class="st0 st1 st2">PRUCESS</text>
+           </svg>
+        </a>
+
+        <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+            <h4>Register</h4>
+            <p>Already registered? Login by following <a asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]">this</a> link.</p>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Username" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Username" class="form-control" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-default">Register</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+    @section Scripts {
+        @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    }

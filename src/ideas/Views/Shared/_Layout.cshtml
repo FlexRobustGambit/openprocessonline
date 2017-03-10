@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <!-- [if lt IE 9]>
+    <script> document.createElement("stack"); </script>
+    [endif]-->
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+     /*     (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-1622084771170684",
+            enable_page_level_ads: true
+          }); */
+    </script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png"> 
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/images/favicons/manifest.json">
+    <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prucess @((ViewData["Title"] != null)? " - " + ViewData["Title"]  : "") </title>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/lib/font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="~/lib/photoswiper/photoswipe.css"> 
+        <link rel="stylesheet" href="~/lib/photoswiper/default-skin/default-skin.css">
+        
+        <script src="~/js/Comments.js" asp-append-version="true"></script>
+        <script src="~/js/Delete.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/dots.js"></script>
+        <script src="~/js/prucess.js" asp-append-version="true"></script>
+        <script src="~/js/tags.js" asp-append-version="true"></script>
+        <script src="~/js/Settings.js" asp-append-version="true"></script>
+        <script src="~/js/localSave.js" asp-append-version="true"></script>
+        <script src="~/lib/photoswiper/photoswipe.min.js" asp-append-version="true"></script>
+        <script src="~/js/Update.js"asp-append-version="true"></script>
+        <script src="~/js/follow.js" asp-append-version="true"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/widgEditor.js" asp-append-version="true"></script>
+        <script src="~/js/favorite.js" asp-append-version="true"></script>
+        <script src="~/js/loadComments.js" asp-append-version="true"></script>
+        <script src="~/js/edit.js" asp-append-version="true" ></script>
+        <script src="~/lib/photoswiper/photoswipe-ui-default.min.js" asp-append-version="true"></script>
+        <script defer src="~/js/images.js" asp-append-version="true"></script>
+        <script defer type="text/javascript" src="~/lib/jquery-filedrop/jquery.filedrop.js" asp-append-version="true"></script>
+        <script defer type="text/javascript" src="~/js/filedrop.js" asp-append-version="true"></script>
+        <script src="~/js/Search.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
+</head>
+<body>
+    <div id="overlay"></div>
+    <div id="searchoutput">
+        <div id="searchOutputContent"></div>
+    </div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="logo" asp-area="" asp-controller="Home" asp-action="">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Laag_1" x="0px" y="0px" viewBox="0 0 594.9 175.5" style="enable-background:new 0 0 594.9 175.5;" xml:space="preserve" shape-rendering="geometricPrecision">
+                    <style type="text/css">
+                        .st0 { fill: #FFFFFF;  }
+                        .st1 { font-family: 'AgencyFB-Reg';   }
+                        .st2 { font-size: 162.1372px;   }
+                    </style>
+                    <rect id="XMLID_1_" x="91.8" y="19.6" transform="matrix(0.977 0.2133 -0.2133 0.977 19.6073 -20.9819)" class="st0" width="30.5" height="121.5" />
+                    <rect id="XMLID_2_" x="54.7" y="59.5" transform="matrix(0.8803 0.4744 -0.4744 0.8803 55.3674 -18.8014)" class="st0" width="20.5" height="81.6" />
+                    <rect id="XMLID_3_" x="19.2" y="85.7" transform="matrix(0.7071 0.7071 -0.7071 0.7071 89.9851 15.0073)" class="st0" width="15.3" height="60.8" />
+                    <text id="XMLID_4_" transform="matrix(1 0 0 1 125.755 143.0028)" class="st0 st1 st2">PRUCESS</text>
+                    </svg>
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-area="" class="navlink" asp-controller="Home" asp-action="Index">All</a></li>
+                    <li>
+                        <div id="searchContainer">
+                            <input type="text" class="form-control inline searchbar" name="x" placeholder="Search term...">
+                            <span class="input-group-btn inline searchbutton">
+                                <button class="btn btn-default " id="searchbutton" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                            </span>
+                        </div>
+                    </li>
+            </ul>
+            @await Html.PartialAsync("_LoginPartial")
+        </div>
+
+        </div>
+    </div>
+  
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2016 - PRUCESS</p>
+        </footer>
+    </div>
+
+    <environment names="Development">
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+       
+    </environment>
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <!-- Background of PhotoSwipe.
+             It's a separate element, as animating opacity is faster than rgba(). -->
+        <div class="pswp__bg"></div>
+
+        <!-- Slides wrapper with overflow:hidden. -->
+        <div class="pswp__scroll-wrap">
+
+            <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+            <div class="pswp__container">
+                <!-- don't modify these 3 pswp__item elements, data is added later on -->
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+
+            <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+            <div class="pswp__ui pswp__ui--hidden">
+
+                <div class="pswp__top-bar">
+
+                    <!--  Controls are self-explanatory. Order can be changed. -->
+
+                    <div class="pswp__counter"></div>
+
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                    <!-- <button class="pswp__button pswp__button--share" title="Share"></button>-->
+
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                    <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                    <!-- element will get class pswp__preloader--active when preloader is running -->
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    @RenderSection("scripts", required: false)
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+</body>
+</html>

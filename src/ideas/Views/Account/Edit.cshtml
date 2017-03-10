@@ -1,0 +1,46 @@
+﻿@model ideas.Models.AccountViewModels.EditViewModel
+<script defer type="text/javascript" src="~/lib/jquery-filedrop/jquery.filedrop.js"></script>
+<script type="text/javascript" src="~/js/filedrop.js"></script>
+<div id="accountholder">
+    <section id="edituser">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <form asp-action="Edit" asp-antiforgery="true">
+             
+                <div class="inline editprofileleft">
+                    @*<input type="hidden" asp-for="@Model.ApplicationUser.Image.Id" value="@Model.ApplicationUser.Image.Id" />*@
+                    <div id="imageuploadholder">
+                        <h2>Drag &amp; Drop</h2>
+                        <div id="dropZone2">
+                            <div id="imagepreview2">
+                                @if (Model.ApplicationUser.Image != null) {
+                                    <div class="niceandsquare fullwidth"><img class="imagepreview" src="/images/uploads/@Model.ApplicationUser.Image.FileName"></div>
+                                }
+                            </div>
+                        </div>
+                        <span class="sideNote">(Allowed extensions:  .jpg, .jpeg or .png | max. filesize: 4mb)</span>
+                    </div>
+                    <p><input type="submit" onclick="clearLocalStorage()" value="Save image" class="btn" /></p>
+                </div>
+                <div class="inline editprofileright">
+                    <input type="hidden" asp-for="JsonImages" value="" />
+
+                    <h3><label asp-for="@Model.ApplicationUser.UserName" class="col-md-2 control-label">Name</label></h3>
+                    <input type="text" asp-for="@Model.ApplicationUser.UserName" class="fullwidth form-control" value="@Model.ApplicationUser.UserName" />
+                    <span asp-validation-for="@Model.ApplicationUser.UserName" class="text-danger"></span>
+
+                    <h3><label asp-for="ApplicationUser.Email" class="col-md-2 control-label"></label></h3>
+                    <input type="text" asp-for="ApplicationUser.Email" class="fullwidth form-control" value="@Model.ApplicationUser.Email" />
+                    <span asp-validation-for="ApplicationUser.Email" class="text-danger"></span>
+
+                    <h3><label asp-for="@Model.ApplicationUser.Description" class="col-md-2 control-label"></label></h3>
+                    <textarea asp-for="@Model.ApplicationUser.Description" id="widgEditor" class="widgEditor form-control">@Html.Raw(Model.ApplicationUser.Description)</textarea>
+                    <span asp-validation-for="@Model.ApplicationUser.Description" class="text-danger"></span>
+                </div>
+                <div class="bottomcontrol">
+                    <input type="submit" onclick="clearLocalStorage()" value="Save changes" class="btn btn-success" />
+                </div>
+            </form>
+        </div>
+    </section>
+</div>

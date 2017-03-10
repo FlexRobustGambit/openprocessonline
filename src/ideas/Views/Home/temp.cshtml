@@ -1,0 +1,50 @@
+﻿@foreach (var idea in Model.Ideas) {
+    <div class="ideaItem" id="@idea.Id">
+        <section class="content">
+            <div class="ideaTitleList">
+                <h2>@idea.Titel</h2>
+            </div>
+            <hr>
+            <div class="ideaTextList">
+                @Html.Raw(idea.Text)
+            </div>
+            <div class="imageHolder">
+                @foreach (var image in idea.Images) {<div class="niceandsquare">
+                        <img class="imagepreview" src="@string.Format("/images/uploads/{1}", hostingEnv.WebRootPath , image.FileName)" />
+                    </div>}
+            </div>
+        </section>
+
+        <section class="control">
+            <div class="ideaFastControl">
+                <a href="javascrip:void(0)"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> Admire</a> |
+                <a href="javascript:void(0)">@idea.Comments.Count Comments</a>
+                <span class="popularity"></span>
+
+            </div>
+        </section>
+        <section class="comment">
+
+            <hr>
+            <div class="commentsHolder">
+                @foreach (var comment in idea.Comments) {
+                    <div class="comment">
+                        <p>
+                            @comment.Text
+                        </p>
+                        <div class="commentDetails">
+                            <span class="commentBy">@comment.Owner.UserName</span>
+                            <span class="commentPostedOn"> posted on </span>
+                            <span class="date">@comment.DateTime.ToString("d MMM \"'\"yy")</span>
+                        </div>
+                    </div>
+                }
+            </div>
+            <form asp-antiforgery="true">
+                <input type="hidden" asp-for="IdeaId" value="@idea.Id" />
+                <textarea asp-for="Comment"></textarea>
+                <input type="button" name="postcomment" value="Post" class="postcommentfrontpage" />
+            </form>
+        </section>
+    </div>
+}

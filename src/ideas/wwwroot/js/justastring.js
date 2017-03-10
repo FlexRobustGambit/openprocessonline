@@ -1,0 +1,1 @@
+﻿Settings.PathLazy = "/Home/LazyRequestFeed"

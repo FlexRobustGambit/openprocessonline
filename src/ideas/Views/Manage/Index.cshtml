@@ -1,0 +1,25 @@
+﻿@model IndexViewModel
+@{
+    ViewData["Title"] = "Manage your account";
+}
+
+
+<div class="controlpanel">
+
+    @if (Model.HasPassword) {
+        <a asp-controller="Manage" asp-action="ChangePassword" class="btn-bracketed">Change Password</a>
+    }
+
+</div> 
+
+
+<div id="accountholder">
+    <div id="profilePictureHolder">
+
+    </div>
+    <div class="profileinfo">
+
+    </div>
+
+    <div 
+</div>

@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using ideas.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+
+@if (SignInManager.IsSignedIn(User))
+{   
+    <script src="~/js/Notification.js"></script>
+    <script>
+        $(function () { 
+            GetNotifications();
+        });
+    </script>
+    <form asp-area="" class="navlink" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a class="dropdown-toggle" data-toggle="dropdown" id="noticationlink" href="#">
+                    <i class="fa fa-bell" aria-hidden="true"></i>
+                    <span id="notificationcounter"></span>
+                </a>
+                <ul class="dropdown-menu notification-menu">
+               
+                </ul>
+            </li>  
+               <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                         @UserManager.GetUserName(User)
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/user/@UserManager.GetUserName(User)">Profile</a></li>
+                    <li><a asp-area="" class="navlink" asp-controller="Home" asp-action="">Timeline</a></li>
+                    <li><a asp-area="" class="navlink" asp-controller="Home" asp-action="Create">New Prucess</a></li>
+                    <li><a asp-area="" class="navlink" asp-controller="Home" asp-action="Update">Update Prucess</a></li>
+                    <li><a class="navlink" href="#" onclick="$('#logoutForm').submit();"><i class="fa fa-sign-out" aria-hidden="true"></i> Log off</a> </li>
+                </ul>
+            </li>
+        </ul>
+    </form>
+   
+    <!--     <li><a asp-area="" class="navlink" asp-controller="Account" asp-action="LogOff" onclick="this.form.submit();" ><i class="fa fa-sign-out" aria-hidden="true"></i> Log off</a> </li> -->
+
+} else {
+    <ul class="nav navbar-nav navbar-right">
+        <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+        <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
+    </ul>
+}

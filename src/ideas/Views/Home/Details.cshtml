@@ -1,0 +1,15 @@
+﻿@model ideas.Models.IdeasViewModel.DetailsViewModel
+
+<script type="text/javascript" src="~/js/loadComplete.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var json = @Json.Serialize(Model.JsonData);
+        $('#DetailsHolder').append(showComplete(JSON.parse(json)));
+        $('.niceandsquare').keepsquare();
+        $('.personal').keepsquare();
+        initPhotoSwipeFromDOM('.post-gallery');
+
+    });
+</script>
+<form id="__AjaxAntiForgeryForm" asp-antiforgery="true"></form>
+<div id="DetailsHolder"></div>

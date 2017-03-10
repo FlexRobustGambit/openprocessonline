@@ -1,0 +1,81 @@
+﻿@inject UserManager<ApplicationUser> UserManager
+@model ideas.Models.ProfileViewModels.ProfileViewModel
+
+
+<script src="~/js/scrolload.js" asp-append-version="true"></script>
+<script src="~/js/loadComplete.js" asp-append-version="true"></script>
+<script src="~/js/loadList.js" asp-append-version="true"></script>
+<form id="__AjaxAntiForgeryForm" asp-antiforgery="true"></form>
+
+<script type="text/javascript">
+    
+    $(function () {
+        var following = JSON.parse(@Json.Serialize(Model.Following));
+        var user = @Json.Serialize(Model.User);
+        
+        $('.controlpanel').append(createFollowButton(following, user.userName , '<i class="fa fa-thumb-tack" aria-hidden="true"></i> Follow', '<i class="fa fa-check" aria-hidden="true"></i> Following'));
+        var json = JSON.parse(@Json.Serialize(Model.JsonIdeas));
+ 
+        if(json.length == 5){
+            initScrollLoad(5, user);
+        }
+
+        json.forEach(function (i) {
+            $('#list').append(list(i));
+            $('#ScrollHolder').append(show(i));
+            if (user == null) {
+                user = i.idea.owner.userName;
+            }
+        });
+        $('.personalimage').keepsquare();
+        $('.niceandsquare').keepsquare();
+        if (!(json.length < 5)) {
+            loadList(user.userName);
+        } else {
+            $("#listloader").hide();
+        }
+    });
+</script>
+<div class="controlpanel">
+    @{ var curent = await UserManager.GetUserAsync(User);}
+    @if (curent.Id == Model.User.Id) {
+        <a asp-controller="Account" asp-action="Edit" class="topcontrol btn-profile">Edit Profile</a>
+        <a asp-controller="Manage" asp-action="ChangePassword" class="topcontrol btn-profile">Change Password</a>
+    }
+</div>
+
+<div class="stats">
+    <span class="statsholder">Prucesses<span class="statsValue"> @Model.User.UserStats.Projects </span>
+    </span><span class="statsholder">Messages<span class="statsValue"> @Model.User.UserStats.Comments </span>
+    </span><span class="statsholder">Favorites<span class="statsValue"> @Model.User.UserStats.Favorites </span>
+    </span><span class="statsholder">Favorited<span class="statsValue"> @Model.User.UserStats.Favorited </span>
+    </span><span class="statsholder">Following<span class="statsValue"> @Model.User.UserStats.Following </span>
+    </span><span class="statsholder">Followers<span class="statsValue"> @Model.User.UserStats.Followers </span></span>
+</div>
+<hr />
+<div id="accountholder">
+    <div id="profilePictureHolder">
+    @if (@Model.User.Image != null) {
+        <img src="~/images/uploads/@Model.User.Image.FileName" class="niceandsquare" alt="@Model.User.Image.OriginName" />
+    }
+    </div><div id="profileinfo">
+        <span class="username"> @Model.User.UserName</span>
+        <span class="Description">
+            @if (Model.User.Description != null) {
+                @Html.Raw(Model.User.Description);
+            } else if (curent.Id == Model.User.Id) {
+                <span class="placeholder">Add a description to make your public profile look awesome. <a asp-controller="Account" asp-action="Edit">Edit Profile</a></span>
+            } else {
+                <span class="placeholder">No description added.</span>
+            }
+    </span>
+    </div>
+</div>
+<div id="ProcessListHolder">
+    <div id="list"></div>
+    <div id="listloaderholder"><img src="~/images/default.svg" id="listloader"></div>
+</div>
+ 
+<hr />
+<div id="DetailsHolder"></div>
+<div id="ScrollHolder"></div>

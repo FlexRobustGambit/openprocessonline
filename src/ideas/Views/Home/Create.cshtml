@@ -1,0 +1,34 @@
+﻿ 
+@model ideas.Models.IdeasViewModel.NewIdeaViewModel
+@{ 
+    ViewData["Title"] = "New Prucess";
+}
+    <script type="text/javascript" src="~/js/formvalidation.js"></script>  
+    <script type="text/javascript"> 
+        function createNewPrucessForm(e) {
+            var form = $("<form>", { "action": "Home/EditIdea", "method": "POST", "id": "editform" });
+            var titelinput = createTitelInput();
+            var editor = createTextEditor();
+            var fd = createFileDrop();
+            var tags = CreateTagInputHolder();
+            var control = createSaveEditButton(saveNewPrucess);
+            form.append(titelinput).append(fd).append(editor).append(tags).append(control);
+            return form;
+        }
+            
+        $(document).ready(function () {
+            $("#newPrucessHolder").append(createNewPrucessForm());
+            initDropZone();
+            editor = new widgEditor('widgEditor');
+
+        });
+    </script>  
+
+    <form id="__AjaxAntiForgeryForm" asp-antiforgery="true"></form>
+    <div class="newIdeaHolder">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group" id="newPrucessHolder"></div>
+    </div>
+
+   
+    

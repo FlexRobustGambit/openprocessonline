@@ -1,0 +1,47 @@
+﻿@model ideas.Models.IdeasViewModel.UpdateViewModel
+
+<script defer type="text/javascript" src="~/lib/jquery-filedrop/jquery.filedrop.js"></script>
+<script defer type="text/javascript" src="~/js/filedrop.js"></script>
+<script src="~/js/loadComplete.js" asp-append-version="true"></script>
+
+<script type="text/javascript">
+    $(function () {
+        var idea = @Json.Serialize(Model.JsonData);
+        if(idea !== null){
+            
+            var idea = JSON.parse(idea);
+            console.dir(idea);
+            $('#old').append(showProcess(idea));
+            $('#Process').val(idea.idea.id);
+        }
+        $('.niceandsquare').keepsquare();
+    });
+</script>
+<style>
+    .comment{display:none;}
+</style>
+
+<div id="ProcessHolder">
+    <div id="old"></div>
+    <div id="new">
+        <div class="newIdeaHolder">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <form asp-action="UpdateProcess" asp-antiforgery="true">
+                    <h2><label asp-for="Text" class="col-md-2 control-label">Update</label></h2>
+                    <div id="imageuploadholder">
+                        <h4>Drag & Drop <span class="sideNote">(Allowed extensions:  .jpg, .jpeg or .png | max. filesize: 4mb)</span></h4>
+                        <div id="dropZone">
+                            <div id="imagepreview"></div>
+                        </div>
+                    </div>
+                    <input type="hidden" asp-for="Process" />
+                    <textarea asp-for="Text" id="widgEditor" class="widgEditor form-control"></textarea>
+                    <span asp-validation-for="Text" class="text-danger"></span>
+                    <input type="hidden" asp-for="JsonImages" value="" />
+                    <input type="reset" onclick="return confirm('Clear all entries?')" value="Reset" class="btn btn-warning" /><input type="submit" onclick="clearLocalStorage()" value="Update" class="btn btn-success" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
